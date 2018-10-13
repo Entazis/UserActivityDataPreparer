@@ -25,16 +25,12 @@ python3.6 user-activity-data-preparing-4.py
 ```
 
 And you will get the following files:
-* user-activity.csv 
-* user-data.csv
-* submission-cnt-weeks.csv
-* submission-cnt-months.csv
-* submission-cnt-days.csv 
-* lifecycle-retention.csv
-* mau-all-locales.csv
-* dau-all-locales.csv
+user-activity.csv, user-data.csv, submission-cnt-weeks.csv, submission-cnt-months.csv, submission-cnt-days.csv, lifecycle-retention.csv, mau-all-locales.csv, dau-all-locales.csv
 
-Upload them to the following spreadsheets:
-* User activity - lifecycle-retention (days)
-* User activity - lifecycle-retention (weeks)
-* User activity - lifecycle-retention (months)
+**Upload them to the following spreadsheets:**
+
+submission-cnt-days.csv, dau-all-locales.csv --> User activity - lifecycle-retention (days)
+
+submission-cnt-weeks.csv, lifecycle-retention.csv --> User activity - lifecycle-retention (weeks)
+
+submission-cnt-months.csv, lifecycle-retention.csv, mau-all-locales.csv --> User activity - lifecycle-retention (months)
