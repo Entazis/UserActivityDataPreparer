@@ -12,6 +12,7 @@ You will need the raw data (getAllUserSubmissionsExport.csv). You can get it fro
 https://bitbucket.org/borzos6/codeberry-churn-calculator/src/master/
 
 Copy getAllUserSubmissionsExport.csv to codeberry-user-activity-data-preparing folder
+Remove the log lines from getAllUserSubmissionsExport.csv
 
 ### Run the scripts
 
@@ -22,6 +23,7 @@ python3.6 user-activity-data-preparing.py
 python3.6 user-activity-data-preparing-2.py
 python3.6 user-activity-data-preparing-3.py
 python3.6 user-activity-data-preparing-4.py
+python3.6 user-activity-data-preparing-5.py
 ```
 
 And you will get the following files:
@@ -34,3 +36,5 @@ submission-cnt-days.csv, dau-all-locales.csv --> User activity - lifecycle-reten
 submission-cnt-weeks.csv, lifecycle-retention.csv --> User activity - lifecycle-retention (weeks)
 
 submission-cnt-months.csv, lifecycle-retention.csv, mau-all-locales.csv --> User activity - lifecycle-retention (months)
+
+user-submission-cnt.csv --> User activity - course completion
