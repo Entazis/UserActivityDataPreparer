@@ -430,5 +430,41 @@ lifecycle_retention = pd.concat((lifeycle_week.rename('weekly (all)'), lifeycle_
            lifeycle_week_esMX.rename('weekly (es-MX)'), lifeycle_month_esMX.rename('monthly (es-MX)'),
            lifeycle_week_ptBR.rename('weekly (pt-BR)'), lifeycle_month_ptBR.rename('monthly (pt-BR)')), axis=1)
 
-lifecycle_retention.iloc[:, :].to_csv('lifecycle-retention.csv', index=True, sep='\t')
+lifecycle_retention_months = pd.concat((lifeycle_month.rename('monthly (all)'),
+                                       lifeycle_month_huHU.rename('monthly (hu-HU)'),
+                                       lifeycle_month_plPL.rename('monthly (pl-PL)'),
+                                       lifeycle_month_roRO.rename('monthly (ro-RO)'),
+                                       lifeycle_month_trTR.rename('monthly (tr-TR)'),
+                                       lifeycle_month_hiIN.rename('monthly (hi-IN)'),
+                                       lifeycle_month_idID.rename('monthly (id-ID)'),
+                                       lifeycle_month_viVN.rename('monthly (vi-VN)'),
+                                       lifeycle_month_enNG.rename('monthly (en-NG)'),
+                                       lifeycle_month_esAR.rename('monthly (es-AR)'),
+                                       lifeycle_month_esMX.rename('monthly (es-MX)'),
+                                       lifeycle_month_ptBR.rename('monthly (pt-BR)')), axis=1)
+
+lifecycle_retention_weeks = pd.concat((lifeycle_week.rename('weekly (all)'),
+                                       lifeycle_week_huHU.rename('weekly (hu-HU)'),
+                                       lifeycle_week_plPL.rename('weekly (pl-PL)'),
+                                       lifeycle_week_roRO.rename('weekly (ro-RO)'),
+                                       lifeycle_week_trTR.rename('weekly (tr-TR)'),
+                                       lifeycle_week_hiIN.rename('weekly (hi-IN)'),
+                                       lifeycle_week_idID.rename('weekly (id-ID)'),
+                                       lifeycle_week_viVN.rename('weekly (vi-VN)'),
+                                       lifeycle_week_enNG.rename('weekly (en-NG)'),
+                                       lifeycle_week_esAR.rename('weekly (es-AR)'),
+                                       lifeycle_week_esMX.rename('weekly (es-MX)'),
+                                       lifeycle_week_ptBR.rename('weekly (pt-BR)')), axis=1)
+
+lifecycle_retention.index.name = '# of days passed since first submission'
+lifecycle_retention_months.index.name = '# of days passed since first submission'
+lifecycle_retention_weeks.index.name = '# of days passed since first submission'
+
+lifecycle_retention = lifecycle_retention.reset_index()
+lifecycle_retention_months = lifecycle_retention_months.reset_index()
+lifecycle_retention_weeks = lifecycle_retention_weeks.reset_index()
+
+lifecycle_retention.iloc[:, :].to_csv('lifecycle-retention.csv', index=False, sep='\t')
+lifecycle_retention_months.iloc[:, :].to_csv('lifecycle-retention-months.csv', index=False, sep='\t')
+lifecycle_retention_weeks.iloc[:, :].to_csv('lifecycle-retention-weeks.csv', index=False, sep='\t')
 ...

@@ -26,9 +26,11 @@ print(user_activity.shape)
 
 dates_sr = pd.date_range(start='2016-04-01', end='2018-12-31', freq='D')
 dau_df = pd.DataFrame(index=dates_sr)
+dau_df.index.name = 'date'
 
 months_sr = pd.date_range(start='2016-04-01', end='2018-12-31', freq='MS')
 mau_df = pd.DataFrame(index=months_sr)
+mau_df.index.name = 'date'
 
 for month in months_sr:
     print(month)
@@ -82,7 +84,8 @@ for month in months_sr:
     activity_cnt = user_activity_ptBR.isin(range).any(axis='columns').sum()
     mau_df.loc[month, 'pt-BR'] = int(activity_cnt)
 
-mau_df.iloc[:, :].to_csv('mau-all-locales.csv', index=True, sep='\t')
+mau_df = mau_df.reset_index()
+mau_df.iloc[:, :].to_csv('mau-all-locales.csv', index=False, sep='\t')
 
 for date in dates_sr:
     print(date)
@@ -135,6 +138,7 @@ for date in dates_sr:
     activity_cnt = user_activity_ptBR.isin(range).any(axis='columns').sum()
     dau_df.loc[date, 'pt-BR'] = int(activity_cnt)
 
-dau_df.iloc[:, :].to_csv('dau-all-locales.csv', index=True, sep='\t')
+dau_df = dau_df.reset_index()
+dau_df.iloc[:, :].to_csv('dau-all-locales.csv', index=False, sep='\t')
 
 
