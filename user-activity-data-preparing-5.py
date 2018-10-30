@@ -11,7 +11,7 @@ print(user_activity.head())
 submissions = user_activity.count(axis=1)
 
 user_submission_count = user_activity.iloc[:, 0:2]
-user_submission_count.loc[:, 'submissions'] = user_activity.count(axis=1)-1
+user_submission_count = user_submission_count.assign(submissions=pd.Series(user_activity.count(axis=1)-1).values)
 user_submission_count = user_submission_count.reset_index()
 
 user_submission_count.iloc[:, :].to_csv('user-submission-cnt.csv', index=False, sep='\t')

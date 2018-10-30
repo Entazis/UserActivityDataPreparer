@@ -24,10 +24,10 @@ print(user_activity.columns)
 print(user_activity.head())
 print(user_activity.shape)
 
-dates_sr = pd.date_range(start='2016-04-01', end='2018-09-27', freq='D')
+dates_sr = pd.date_range(start='2016-04-01', end='2018-12-31', freq='D')
 dau_df = pd.DataFrame(index=dates_sr)
 
-months_sr = pd.date_range(start='2016-04-01', end='2018-09-27', freq='MS')
+months_sr = pd.date_range(start='2016-04-01', end='2018-12-31', freq='MS')
 mau_df = pd.DataFrame(index=months_sr)
 
 for month in months_sr:
