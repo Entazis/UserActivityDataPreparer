@@ -1,6 +1,6 @@
 import pandas as pd
-import numpy as np
 
+print('user-activity-data-preparing-4 has started...')
 
 user_activity = pd.read_csv('user-activity.csv', delim_whitespace=True,
                             parse_dates=True, infer_datetime_format=True, usecols=range(0, 250),  # nrows=1000,
@@ -24,16 +24,15 @@ print(user_activity.columns)
 print(user_activity.head())
 print(user_activity.shape)
 
-dates_sr = pd.date_range(start='2016-04-01', end='2018-12-31', freq='D')
+dates_sr = pd.date_range(start='2017-01-01', end='2019-12-31', freq='D')
 dau_df = pd.DataFrame(index=dates_sr)
 dau_df.index.name = 'date'
 
-months_sr = pd.date_range(start='2016-04-01', end='2018-12-31', freq='MS')
+months_sr = pd.date_range(start='2017-01-01', end='2019-12-31', freq='MS')
 mau_df = pd.DataFrame(index=months_sr)
 mau_df.index.name = 'date'
 
 for month in months_sr:
-    print(month)
     range = pd.date_range(start=month,
                           end=month + pd.DateOffset(months=1),
                           freq='D', closed='left').strftime(date_format="%Y-%m-%d").tolist()
@@ -88,7 +87,6 @@ mau_df = mau_df.reset_index()
 mau_df.iloc[:, :].to_csv('mau-all-locales.csv', index=False, sep='\t')
 
 for date in dates_sr:
-    print(date)
     range = pd.date_range(start=date,
                          end=date).strftime(date_format="%Y-%m-%d").tolist()
     activity_cnt = user_activity.isin(range).any(axis='columns').sum()
@@ -141,4 +139,4 @@ for date in dates_sr:
 dau_df = dau_df.reset_index()
 dau_df.iloc[:, :].to_csv('dau-all-locales.csv', index=False, sep='\t')
 
-
+print('user-activity-data-preparing-4 has finished!')

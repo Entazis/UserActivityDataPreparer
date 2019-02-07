@@ -1,5 +1,6 @@
 import pandas as pd
 
+print('user-activity-data-preparing-3 has started...')
 
 user_activity = pd.read_csv('user-activity.csv', delim_whitespace=True,
                             parse_dates=True, infer_datetime_format=True, usecols=range(0, 250),  # nrows=1000,
@@ -8,8 +9,6 @@ user_locale = pd.read_csv('user-data.csv', delim_whitespace=True).set_index(['us
 
 user_activity = user_activity.astype('datetime64')
 user_activity_all = user_locale.merge(user_activity, left_index=True, right_index=True)
-print(user_activity.columns)
-print(user_activity.head())
 
 wA_df = pd.DataFrame()
 for i in range(1, 121):
@@ -467,4 +466,5 @@ lifecycle_retention_weeks = lifecycle_retention_weeks.reset_index()
 lifecycle_retention.iloc[:, :].to_csv('lifecycle-retention.csv', index=False, sep='\t')
 lifecycle_retention_months.iloc[:, :].to_csv('lifecycle-retention-months.csv', index=False, sep='\t')
 lifecycle_retention_weeks.iloc[:, :].to_csv('lifecycle-retention-weeks.csv', index=False, sep='\t')
-...
+
+print('user-activity-data-preparing-3 has finished!')

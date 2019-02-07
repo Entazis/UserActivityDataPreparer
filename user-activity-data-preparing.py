@@ -9,11 +9,11 @@ def f(x):
         return x[x.last_valid_index()]
 
 
+print('user-activity-data-preparing-1 has started...')
+
 data = pd.read_csv('getAllUserSubmissionsExport.csv', delim_whitespace=True, header=None,
                    names=['date', 'userid', 'locale', 'lessonid', 'zero']
                    ).sort_values(by='date', ascending=True).reset_index()
-print(data.head())
-print(data.shape)
 
 # Starter project
 data = data.loc[data['lessonid'] != 'quinin', :]
@@ -37,17 +37,7 @@ cols = cols[-1:] + cols[:-1]
 user_submissions = user_submissions[cols]
 user_submissions = user_submissions.reset_index()
 
-print(user_submissions.head())
-print(user_submissions.columns)
-print(user_submissions.shape)
-
 user_submissions.iloc[:, :].to_csv('user-activity.csv', index=False, sep='\t')
 user_submissions.iloc[:, 0:4].to_csv('user-data.csv', index=False, sep='\t')
 
-...
-
-
-
-
-
-
+print('user-activity-data-preparing-1 has finished!')

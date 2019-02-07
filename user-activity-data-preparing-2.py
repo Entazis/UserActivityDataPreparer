@@ -1,5 +1,6 @@
 import pandas as pd
 
+print('user-activity-data-preparing-2 has started...')
 
 user_activity = pd.read_csv('user-activity.csv', delim_whitespace=True,
                             parse_dates=True, infer_datetime_format=True, usecols=range(0, 250),  # nrows=1000,
@@ -7,8 +8,6 @@ user_activity = pd.read_csv('user-activity.csv', delim_whitespace=True,
 user_locale = pd.read_csv('user-data.csv', delim_whitespace=True).set_index(['userid']).drop(['churn', '0'], axis=1)
 
 user_activity = user_activity.astype('datetime64')
-print(user_activity.columns)
-print(user_activity.head())
 
 submissionCntWeeks = pd.DataFrame()
 for i in range(1, 30):
@@ -52,4 +51,4 @@ for i in range(1, 31):
 submissionCntDays = user_locale.merge(submissionCntDays, left_index=True, right_index=True)
 submissionCntDays.iloc[:, :].to_csv('submission-cnt-days.csv', index=True, sep='\t')
 
-...
+print('user-activity-data-preparing-2 has finished!')
