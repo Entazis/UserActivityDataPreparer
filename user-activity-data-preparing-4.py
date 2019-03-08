@@ -20,9 +20,6 @@ user_activity_enNG = user_activity_all.loc[user_activity_all['locale'] == 'en-NG
 user_activity_esAR = user_activity_all.loc[user_activity_all['locale'] == 'es-AR', :].drop(['locale'], axis=1)
 user_activity_esMX = user_activity_all.loc[user_activity_all['locale'] == 'es-MX', :].drop(['locale'], axis=1)
 user_activity_ptBR = user_activity_all.loc[user_activity_all['locale'] == 'pt-BR', :].drop(['locale'], axis=1)
-print(user_activity.columns)
-print(user_activity.head())
-print(user_activity.shape)
 
 dates_sr = pd.date_range(start='2017-01-01', end='2019-12-31', freq='D')
 dau_df = pd.DataFrame(index=dates_sr)
