@@ -12,7 +12,7 @@ def f(x):
 print('user-activity-data-preparing-1 has started...')
 
 data = pd.read_csv('getAllUserSubmissionsExport.csv', delim_whitespace=True, header=None,
-                   names=['date', 'userid', 'locale', 'lessonid', 'zero']
+                   names=['date', 'userid', 'locale', 'lessonid', 'internalid']
                    ).sort_values(by='date', ascending=True).reset_index()
 
 # Starter project
@@ -27,6 +27,12 @@ data = data.loc[(data['lessonid'] != 'padyxs') | ('2017-11-23' < data['date']), 
 # Free weekend
 #data = data.loc[('2017-10-13' != data['date']) & ('2017-10-14' != data['date']) & ('2017-10-15' != data['date']) &
 #                ('2017-11-24' != data['date']) & ('2017-11-25' != data['date']) & ('2017-11-26' != data['date']), :]
+
+# Trial
+#data = data.loc[~data['internalid'].str.contains('trial'), :]
+
+# Bootcamp
+#data = data.loc[~data['internalid'].str.contains('bootcamp'), :]
 
 user_submissions = data.loc[:, ['userid', 'locale', 'date']].set_index(['userid', 'locale']).groupby(
     ['userid', 'locale'])['date'].apply(list).apply(pd.Series)
