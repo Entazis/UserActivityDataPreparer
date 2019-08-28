@@ -1,4 +1,4 @@
-# CodeBerry User-activity-data Preparing
+# User-activity-data Preparing
 
 The scripts create user activity data which can be used for visualization.
 
@@ -8,10 +8,9 @@ Clone the project to your local computer.
 
 ### Prerequisites
 
-You will need the raw data (getAllUserSubmissionsExport.csv). You can get it from here: (see "Get data from Mongo" section)
-https://bitbucket.org/borzos6/codeberry-churn-calculator/src/master/
+You will need the raw data (getAllUserSubmissionsExport.csv). You can get it from here: ... (see "Get data from Mongo" section)
 
-Copy getAllUserSubmissionsExport.csv to codeberry-user-activity-data-preparing folder
+Copy getAllUserSubmissionsExport.csv to user-activity-data-preparing folder
 Remove the log lines from getAllUserSubmissionsExport.csv
 
 ### Run the scripts
